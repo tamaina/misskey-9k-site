@@ -26,8 +26,10 @@ Git-based automatic deployment is deferred: Cloudflare Workers Builds requires a
 Content checked on 2026-10-20 against the public `tamaina/misskey-a` repository:
 
 - Latest public prerelease: [9000.0.0-beta.3](https://github.com/tamaina/misskey-a/releases/tag/9000.0.0-beta.3), tag commit `297fd7f2d1418f50f4135d034c45f4c1589ca7c1`.
-- Feature claims: [tagged CHANGELOG](https://github.com/tamaina/misskey-a/blob/9000.0.0-beta.3/CHANGELOG.md), especially #1, #14, #17, #104, #119, #162, #191 and OAuth/MCP changes.
-- Unmerged functionality is described separately; billing, P2P, channel federation and auth redesign are not advertised as ready. OIDC login is not connected. MCP is disabled by default and some features are experimental.
+- Released feature claims: [beta.3 CHANGELOG](https://github.com/tamaina/misskey-a/blob/9000.0.0-beta.3/CHANGELOG.md). The introduction now follows the author’s grouping: MCP/OAuth, ActivityPub Ed25519, remote avatar decorations, client improvements, then feature structure, oRPC/Valibot and VVI.
+- Editorial basis: [author edit af016bb](https://github.com/tamaina/misskey-a/commit/af016bb8f56e762d9864bc88710737c88a7b10a5) and the [updated CHANGELOG at 4085154](https://github.com/tamaina/misskey-a/blob/4085154bda21f0b200179c28e06682728f69bb27/CHANGELOG.md). Do not restore deleted promotional points or treat its 9000.0.0 heading as a stable release.
+- [MCP self-event exclusion #215](https://github.com/tamaina/misskey-a/pull/215) is displayed separately as develop-only after beta.3. PR #217 (Unicode list-name limit correction) was also verified merged on develop, not released in beta.3; it is outside this pinned editorial snapshot and is not promoted on the page.
+- Unmerged functionality is described separately; billing, P2P, channel federation and auth redesign are not advertised as ready. OIDC login is not connected. MCP is disabled by default; the page states its configuration, proxy and permission requirements.
 - `public/images/oauth-permission-selection.png` is copied from the tagged public repository's `docs/screenshots/`. It is a synthetic UI sample, explicitly labeled on the site. It contains no account or private-note data. It is not presented as a production screenshot.
 - The site's 9k wordmark and orbital artwork are original presentation graphics, not an asserted upstream official logo.
 
@@ -61,4 +63,4 @@ AGPL-3.0, matching the fork's licensing. The public UI sample retains its proven
 
 The custom 9k mark is a font-independent vector in `src/assets/brand-mark.svg`, reused by `BrandMark.astro`, the favicon and OG artwork. It is decorative; home links retain the accessible name “Misskey 9000 ホーム”. Prose references to 9k remain text.
 
-Icons use the official [`@lucide/astro`](https://lucide.dev/guide/astro/getting-started) package (ISC license). Named imports render inline SVG at build time without browser JavaScript. Link icons supplement visible labels and are hidden from assistive technology. Feature cards use Bookmark, Share2, UserCheck and ShieldCheck; external links use ArrowUpRight consistently.
+Icons use the official [`@lucide/astro`](https://lucide.dev/guide/astro/getting-started) package (ISC license). Named imports render inline SVG at build time without browser JavaScript. Link icons supplement visible labels and are hidden from assistive technology. Feature cards use Plug, Network, Sparkles and PanelsTopLeft; external links use ArrowUpRight consistently.
