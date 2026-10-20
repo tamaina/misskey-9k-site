@@ -5,5 +5,5 @@
   "compatibility_date": "2026-10-20",
   "assets": { "directory": "./dist", "not_found_handling": "404-page" },
   "routes": [{ "pattern": "mk9k.a9z.dev", "custom_domain": true }],
-  "workers_dev": true
+  "workers_dev": true,
 }
