@@ -50,6 +50,26 @@ for (const [name, width, height] of [
       .filter((a) => !document.querySelector(a.getAttribute("href")))
       .map((a) => a.href),
     links: [...new Set([...document.links].map((a) => a.href))],
+    featureSpacing: [...document.querySelectorAll(".feature-top")].map(
+      (el) => getComputedStyle(el).marginBottom,
+    ),
+    featureNumberSize: [...document.querySelectorAll(".feature-number")].map(
+      (el) => getComputedStyle(el).fontSize,
+    ),
+    featureIcons: document.querySelectorAll(
+      '.feature-top svg[aria-hidden="true"]',
+    ).length,
+    brandPaths: document.querySelectorAll(
+      ".brandmark svg:first-child path, .giant path",
+    ).length,
+    fontDependentBranding: document.querySelectorAll(
+      ".brandmark text, .giant text",
+    ).length,
+    arrowGlyphs: /[↗↓]/u.test(document.body.textContent),
+    unnamedLinks: [...document.links].filter(
+      (a) => !a.textContent.trim() && !a.getAttribute("aria-label"),
+    ).length,
+    runtimeScripts: document.querySelectorAll("script").length,
   }));
   await page.getByRole("link", { name: "9k をはじめる" }).click();
   await page.waitForTimeout(700);
@@ -81,6 +101,14 @@ if (
       p.structure.overflow ||
       p.structure.brokenImages.length ||
       p.structure.badAnchors.length ||
+      p.structure.featureSpacing.some((v) => v !== "10px") ||
+      p.structure.featureNumberSize.some((v) => v !== "20px") ||
+      p.structure.featureIcons !== 4 ||
+      p.structure.brandPaths !== 6 ||
+      p.structure.fontDependentBranding ||
+      p.structure.arrowGlyphs ||
+      p.structure.unnamedLinks ||
+      p.structure.runtimeScripts ||
       p.violations.length ||
       !p.navigation,
   )

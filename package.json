@@ -11,11 +11,12 @@
     "deploy": "pnpm build && wrangler deploy"
   },
   "dependencies": {
+    "@lucide/astro": "1.59.0",
     "astro": "7.4.0"
   },
   "devDependencies": {
-    "wrangler": "4.151.1",
+    "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.64.1",
-    "@axe-core/playwright": "4.14.0"
+    "wrangler": "4.151.1"
   }
 }

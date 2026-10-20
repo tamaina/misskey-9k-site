@@ -1,0 +1,6 @@
+---
+import Mark from '../assets/brand-mark.svg';
+interface Props { class?: string; }
+const { class: className } = Astro.props;
+---
+<Mark class={className} aria-hidden="true" focusable="false" />

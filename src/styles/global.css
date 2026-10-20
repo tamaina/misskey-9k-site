@@ -83,13 +83,31 @@ header {
   letter-spacing: -0.03em;
 }
 .brandmark {
-  font-size: 43px;
-  letter-spacing: -0.13em;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 1px;
 }
-.brandmark span {
-  font-size: 30px;
-  margin-left: 3px;
+.brandmark > svg:first-child {
+  width: 48px;
+  height: 34px;
+}
+.brandmark .brand-arrow {
+  width: 21px;
+  height: 21px;
   color: var(--blue);
+}
+.icon {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.18em;
+  flex-shrink: 0;
+}
+.card-arrow {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  align-self: center;
 }
 nav {
   display: flex;
@@ -207,21 +225,21 @@ h1 > span {
 }
 .giant {
   position: absolute;
-  font-family: Arial, sans-serif;
-  font-weight: 900;
-  font-size: clamp(170px, 23vw, 330px);
-  letter-spacing: -0.16em;
-  left: 13%;
-  top: 15%;
-  line-height: 1.25;
+  width: 75%;
+  height: auto;
+  left: 11%;
+  top: 22%;
   transform: rotate(-10deg);
   color: var(--blue);
 }
-.giant > span {
-  font-size: 0.38em;
+.hero-arrow {
   position: absolute;
-  top: 0;
-  right: -0.65em;
+  width: 20%;
+  height: auto;
+  right: 10%;
+  top: 15%;
+  color: var(--blue);
+  stroke-width: 1.5;
 }
 .orbit {
   position: absolute;
@@ -263,8 +281,9 @@ h1 > span {
 }
 .satellite {
   position: absolute;
-  font-size: 40px;
-  font-weight: 300;
+  width: 40px;
+  height: 40px;
+  stroke-width: 1.25;
 }
 .satellite.a {
   left: 5%;
@@ -274,7 +293,8 @@ h1 > span {
 .satellite.b {
   right: 9%;
   bottom: 24%;
-  font-size: 64px;
+  width: 64px;
+  height: 64px;
   color: #ba3e22;
 }
 .ticker {
@@ -293,7 +313,10 @@ h1 > span {
   gap: 45px;
   justify-content: center;
 }
-.ticker span {
+.ticker-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
   color: var(--mint);
 }
 .section {
@@ -343,12 +366,16 @@ h1 > span {
   display: flex;
   justify-content: space-between;
   font-family: monospace;
-  font-size: 14px;
+  align-items: center;
   color: var(--blue);
-  margin-bottom: 36px;
+  margin-bottom: 10px;
 }
-.feature-top span:last-child {
-  font-size: 24px;
+.feature-number {
+  font-size: 20px;
+  line-height: 1.4;
+}
+.feature-icon {
+  flex-shrink: 0;
 }
 .feature h3 {
   font-size: 22px;
@@ -558,8 +585,8 @@ footer > a:last-child {
     aspect-ratio: 0.76;
   }
   .giant {
-    top: 23%;
-    left: 9%;
+    top: 28%;
+    left: 10%;
   }
   .hero h1 {
     font-size: 47px;
@@ -596,10 +623,15 @@ footer > a:last-child {
     gap: 10px;
   }
   .brandmark {
-    font-size: 35px;
+    gap: 0;
   }
-  .brandmark span {
-    font-size: 24px;
+  .brandmark > svg:first-child {
+    width: 38px;
+    height: 27px;
+  }
+  .brandmark .brand-arrow {
+    width: 17px;
+    height: 17px;
   }
   nav {
     gap: 15px;
@@ -642,10 +674,9 @@ footer > a:last-child {
     border-radius: 45% 45% 5px 5px;
   }
   .giant {
-    font-size: 62vw;
-    top: 2%;
-    left: 23%;
-    line-height: 1.2;
+    width: 65%;
+    top: 19%;
+    left: 18%;
   }
   .art-label.top {
     top: 10%;
@@ -656,7 +687,8 @@ footer > a:last-child {
     font-size: 7px;
   }
   .satellite.b {
-    font-size: 45px;
+    width: 45px;
+    height: 45px;
     bottom: 18%;
   }
   .satellite.a {
@@ -693,9 +725,6 @@ footer > a:last-child {
   }
   .feature {
     padding: 25px;
-  }
-  .feature-top {
-    margin-bottom: 22px;
   }
   .feature h3 {
     font-size: 21px;

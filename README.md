@@ -42,7 +42,7 @@ pnpm preview --host 127.0.0.1
 SITE_URL=http://127.0.0.1:4321 node scripts/validate.mjs
 ```
 
-The script captures desktop and two mobile sizes, checks overflow, broken images, anchors, navigation, browser errors and axe WCAG A/AA findings. Output is ignored under `test-results/`. Use `SITE_URL=https://mk9k.a9z.dev` for public verification. `scripts/og.mjs` regenerates `public/og.png` (1200 × 630).
+The script captures desktop and two mobile sizes, checks overflow, broken images, anchors, navigation, browser errors and axe WCAG A/AA findings. Output is ignored under `test-results/`. Use `SITE_URL=https://mk9k.a9z.dev` for public verification. `scripts/og.mjs` regenerates `public/og.png` (1200 × 630) and the path-based favicon after `pnpm build`.
 
 ## License
 
@@ -56,3 +56,9 @@ AGPL-3.0, matching the fork's licensing. The public UI sample retains its proven
 - HTTPS custom domain returned 200 and Cloudflare deployment reported 100% traffic to the published version.
 - Visual checks cover typography, contrast, mobile stacking, visible focus styling and reduced-motion behavior. Automated checks do not establish complete accessibility conformance.
 - On this shared host Chromium needed `ignoreDefaultArgs: ['--disable-dev-shm-usage']` so rendering uses `/dev/shm` instead of quota-limited temporary files. `BROWSER_EXECUTABLE` can point at an installed browser; ordinary setups can use the Playwright-installed default.
+
+## SVG branding and icons
+
+The custom 9k mark is a font-independent vector in `src/assets/brand-mark.svg`, reused by `BrandMark.astro`, the favicon and OG artwork. It is decorative; home links retain the accessible name “Misskey 9000 ホーム”. Prose references to 9k remain text.
+
+Icons use the official [`@lucide/astro`](https://lucide.dev/guide/astro/getting-started) package (ISC license). Named imports render inline SVG at build time without browser JavaScript. Link icons supplement visible labels and are hidden from assistive technology. Feature cards use Bookmark, Share2, UserCheck and ShieldCheck; external links use ArrowUpRight consistently.
