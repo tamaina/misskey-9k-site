@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mk9k.a9z.dev/sitemap.xml

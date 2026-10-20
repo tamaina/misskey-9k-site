@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "misskey-9k-site",
+  "account_id": "df95b78f9506186d8436fbecc8377bdc",
+  "compatibility_date": "2026-10-20",
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" },
+  "routes": [{ "pattern": "mk9k.a9z.dev", "custom_domain": true }],
+  "workers_dev": true
+}
