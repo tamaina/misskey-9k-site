@@ -66,7 +66,8 @@ for (const [name, width, height] of [
     unnamedLinks: [...document.links].filter(
       (a) => !a.textContent.trim() && !a.getAttribute("aria-label"),
     ).length,
-    runtimeScripts: document.querySelectorAll("script").length,
+    runtimeScripts: [...document.scripts].filter(script => !script.src.startsWith('https://static.cloudflareinsights.com/beacon.min.js/')).length,
+    platformScripts: [...document.scripts].filter(script => script.src.startsWith('https://static.cloudflareinsights.com/beacon.min.js/')).map(script => script.src),
   }));
   const axe = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21aa"])

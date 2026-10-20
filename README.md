@@ -13,7 +13,7 @@ pnpm build
 pnpm preview
 ```
 
-The production output is `dist/`. This is a purely static site with no runtime JavaScript, backend, database, analytics or external font requests.
+The production output is `dist/`. The source is a purely static site with no runtime JavaScript, backend, database, analytics code or external font requests. Cloudflare may inject its account-configured Insights beacon into public browser responses; validation records that platform script separately.
 
 ## Deployment
 
