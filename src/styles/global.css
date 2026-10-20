@@ -793,3 +793,14 @@ footer > a:last-child {
     scroll-behavior: auto;
   }
 }
+
+/* Unreleased work is separated from the shipped feature and architecture sections. */
+.proposals { background: #ebece2; }
+.proposal-intro { max-width: 800px; font-size: 14px; margin-bottom: 32px; }
+.proposals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 24px; }
+.proposal-top { display: flex; align-items: center; gap: 10px; color: var(--blue); margin-bottom: 18px; }
+.proposal-top span { font-size: 10px; letter-spacing: .04em; }
+.proposal-links { display: flex; flex-wrap: wrap; gap: 10px 18px; }
+.features .feature-grid + .small { margin-top: 24px; margin-bottom: 0; }
+@media (max-width: 900px) { .proposals-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { nav { gap: 10px; } }
