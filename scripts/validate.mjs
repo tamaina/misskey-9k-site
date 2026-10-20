@@ -35,9 +35,6 @@ for (const [name, width, height] of [
     );
   });
   await page.screenshot({ path: `test-results/${name}.png`, fullPage: true });
-  const axe = await new AxeBuilder({ page })
-    .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
-    .analyze();
   const structure = await page.evaluate(() => ({
     title: document.title,
     lang: document.documentElement.lang,
@@ -71,6 +68,9 @@ for (const [name, width, height] of [
     ).length,
     runtimeScripts: document.querySelectorAll("script").length,
   }));
+  const axe = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+    .analyze();
   await page.getByRole("link", { name: "9k をはじめる" }).click();
   await page.waitForTimeout(700);
   const navigation = await page.evaluate(() => location.hash === "#start");
