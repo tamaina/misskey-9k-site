@@ -1,6 +1,8 @@
 ---
-import Mark from '../assets/brand-mark.svg';
-interface Props { class?: string; }
-const { class: className } = Astro.props;
+import Mark from '../assets/mi9k-mark.svg';
+import Wordmark from '../assets/misskey9000-wordmark.svg';
+interface Props { class?: string; variant?: 'mark' | 'wordmark'; }
+const { class: className, variant = 'mark' } = Astro.props;
+const Logo = variant === 'wordmark' ? Wordmark : Mark;
 ---
-<Mark class={className} aria-hidden="true" focusable="false" />
+<Logo class={className} aria-hidden="true" focusable="false" />

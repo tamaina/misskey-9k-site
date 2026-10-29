@@ -75,26 +75,13 @@ header {
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  flex-shrink: 0;
   text-decoration: none;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
 }
 .brandmark {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 1px;
-}
-.brandmark > svg:first-child {
-  width: 48px;
-  height: 34px;
-}
-.brandmark .brand-arrow {
-  width: 21px;
-  height: 21px;
-  color: var(--blue);
+  display: block;
+  width: 150px;
+  height: auto;
 }
 .icon {
   display: inline-block;
@@ -225,10 +212,10 @@ h1 > span {
 }
 .giant {
   position: absolute;
-  width: 75%;
+  width: 53%;
   height: auto;
-  left: 11%;
-  top: 22%;
+  left: 22%;
+  top: 20%;
   transform: rotate(-10deg);
   color: var(--blue);
 }
@@ -548,11 +535,8 @@ footer {
   border-top: 1px solid var(--line);
   padding-block: 35px;
 }
-footer .brand {
-  font-size: 27px;
-}
-footer .brand span {
-  font-size: 12px;
+footer .brandmark {
+  width: 136px;
 }
 footer p,
 footer > a:last-child {
@@ -585,8 +569,9 @@ footer > a:last-child {
     aspect-ratio: 0.76;
   }
   .giant {
-    top: 28%;
-    left: 10%;
+    width: 61%;
+    top: 23%;
+    left: 19%;
   }
   .hero h1 {
     font-size: 47px;
@@ -618,20 +603,8 @@ footer > a:last-child {
   header {
     height: 85px;
   }
-  .brand {
-    font-size: 12px;
-    gap: 10px;
-  }
   .brandmark {
-    gap: 0;
-  }
-  .brandmark > svg:first-child {
-    width: 38px;
-    height: 27px;
-  }
-  .brandmark .brand-arrow {
-    width: 17px;
-    height: 17px;
+    width: 106px;
   }
   nav {
     gap: 15px;
@@ -674,9 +647,9 @@ footer > a:last-child {
     border-radius: 45% 45% 5px 5px;
   }
   .giant {
-    width: 65%;
-    top: 19%;
-    left: 18%;
+    width: 38%;
+    top: 17%;
+    left: 30%;
   }
   .art-label.top {
     top: 10%;
@@ -776,12 +749,8 @@ footer > a:last-child {
     align-items: start;
     gap: 20px;
   }
-  footer .brand {
-    flex-wrap: wrap;
-    font-size: 25px;
-  }
-  footer .brand span {
-    font-size: 11px;
+  footer .brandmark {
+    width: 116px;
   }
   footer > a:last-child {
     font-size: 9px;

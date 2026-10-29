@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "brand": "node scripts/brand-assets.mjs",
     "preview": "astro preview",
     "deploy": "pnpm build && wrangler deploy"
   },
