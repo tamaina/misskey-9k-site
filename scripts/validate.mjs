@@ -10,7 +10,8 @@ const browser = await (
     ? { executablePath: process.env.BROWSER_EXECUTABLE }
     : {}),
 });
-await mkdir("test-results", { recursive: true });
+const output = process.env.VALIDATION_OUTPUT || ".tmp/test-results";
+await mkdir(output, { recursive: true });
 const base = process.env.SITE_URL || "http://127.0.0.1:4321";
 const report = { base, pages: [] };
 for (const [name, width, height] of [
@@ -34,7 +35,7 @@ for (const [name, width, height] of [
       }),
     );
   });
-  await page.screenshot({ path: `test-results/${name}.png`, fullPage: true });
+  await page.screenshot({ path: `${output}/${name}.png`, fullPage: true });
   const structure = await page.evaluate(() => ({
     title: document.title,
     lang: document.documentElement.lang,
@@ -57,7 +58,7 @@ for (const [name, width, height] of [
       '.feature-top svg[aria-hidden="true"]',
     ).length,
     brandPaths: document.querySelectorAll(
-      ".brandmark svg:first-child path, .giant path",
+      ".brandmark path, .giant path",
     ).length,
     fontDependentBranding: document.querySelectorAll(
       ".brandmark text, .giant text",
@@ -90,7 +91,7 @@ for (const [name, width, height] of [
   await context.close();
 }
 await writeFile(
-  "test-results/validation.json",
+  `${output}/validation.json`,
   JSON.stringify(report, null, 2),
 );
 console.log(JSON.stringify(report, null, 2));
@@ -105,7 +106,7 @@ if (
       p.structure.featureSpacing.some((v) => v !== "10px") ||
       p.structure.featureNumberSize.some((v) => v !== "20px") ||
       p.structure.featureIcons !== 4 ||
-      p.structure.brandPaths !== 6 ||
+      p.structure.brandPaths !== 3 ||
       p.structure.fontDependentBranding ||
       p.structure.arrowGlyphs ||
       p.structure.unnamedLinks ||

@@ -32,7 +32,7 @@ Content checked on 2026-10-20 against the public `tamaina/misskey-a` repository:
 - Beta.4 excludes posting-role policies #122, channel federation #136, recovery-code work #146 and reauthentication redesign #188. This site update does not assert deployment of beta.4 to any particular Misskey server. No production server or account permissions were changed.
 - Unmerged functionality is described separately; billing, P2P, channel federation and auth redesign are not advertised as ready. OIDC login is not connected. MCP is disabled by default; the page states its configuration, proxy and permission requirements.
 - `public/images/oauth-permission-selection.png` is copied from the tagged public repository's `docs/screenshots/`. It is a synthetic UI sample, explicitly labeled on the site. It contains no account or private-note data. It is not presented as a production screenshot.
-- The site's 9k wordmark and orbital artwork are original presentation graphics, not an asserted upstream official logo.
+- The Mi9k mark and Misskey 9000 wordmark are author-provided vectors; orbital artwork is site presentation graphics.
 
 When updating, recheck both the release tag and open PRs. A CHANGELOG heading of `9000.0.0` does not establish a stable release. The README/installation links refer to upstream and fork documentation; package and Docker distribution availability must not be assumed.
 
@@ -43,9 +43,10 @@ pnpm exec playwright install chromium
 pnpm build
 pnpm preview --host 127.0.0.1
 SITE_URL=http://127.0.0.1:4321 node scripts/validate.mjs
+node scripts/brand-review.mjs
 ```
 
-The script captures desktop and two mobile sizes, checks overflow, broken images, anchors, navigation, browser errors and axe WCAG A/AA findings. Output is ignored under `test-results/`. Use `SITE_URL=https://mk9k.a9z.dev` for public verification. `scripts/og.mjs` regenerates `public/og.png` (1200 × 630) and the path-based favicon after `pnpm build`.
+The script captures desktop and two mobile sizes, checks overflow, broken images, anchors, navigation, browser errors and axe WCAG A/AA findings. Output is ignored under `.tmp/test-results/` (`VALIDATION_OUTPUT` can override it). Use `SITE_URL=https://mk9k.a9z.dev` for public verification. Run `pnpm build && pnpm brand && pnpm build` serially to regenerate and include the brand assets. `scripts/og.mjs` remains a compatibility entry point.
 
 ## License
 
@@ -62,7 +63,11 @@ AGPL-3.0, matching the fork's licensing. The public UI sample retains its proven
 
 ## SVG branding and icons
 
-The custom 9k mark is a font-independent vector in `src/assets/brand-mark.svg`, reused by `BrandMark.astro`, the favicon and OG artwork. It is decorative; home links retain the accessible name “Misskey 9000 ホーム”. Prose references to 9k remain text.
+The author-provided vectors are `src/assets/mi9k-mark.svg` and `src/assets/misskey9000-wordmark.svg`. Their original path data, viewBoxes and transforms are preserved. Inline logos inherit `currentColor` and are decorative; home links retain the accessible name “Misskey 9000 ホーム”.
+
+`pnpm brand` runs `scripts/brand-assets.mjs` using the existing Playwright Chromium installation (or `BROWSER_EXECUTABLE`). Build first so the generator can reuse the hero arrow from `dist/index.html`. It writes `public/og.png` (1200 × 630), SVG/ICO favicons, Apple/192/512/maskable icons and `site.webmanifest`; rebuild afterwards to copy them into `dist/`. Review captures from `node scripts/brand-review.mjs` go to `.tmp/shots/` (1440×900 desktop, 390×844 mobile, full pages and dark favicon). Path SHA-256 checks guard against shape changes; if the original exports are present in `.tmp/logo-src/`, paths, viewBoxes and transforms are also compared directly.
+
+The transparent SVG favicon has 10% vertical padding and switches from black to cream in dark mode. PNG icons use opaque blue (`#253bd3`) with cream (`#f6f4eb`) marks, 12% vertical padding, and no baked-in corner rounding. ICO contains 16/32/48 px PNGs on the same blue background for contrast in both tab themes. The maskable mark is 56% of the square's height, fitting inside the central 80%-diameter safe circle. The static site's manifest uses `display: browser`.
 
 Icons use the official [`@lucide/astro`](https://lucide.dev/guide/astro/getting-started) package (ISC license). Named imports render inline SVG at build time without browser JavaScript. Link icons supplement visible labels and are hidden from assistive technology. Feature cards use Plug, Network, Sparkles and PanelsTopLeft; external links use ArrowUpRight consistently.
 
